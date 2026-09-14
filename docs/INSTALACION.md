@@ -1,4 +1,4 @@
-# Guía de Instalación — Pocknix DeckStation
+# Guía de Instalación — DeckStation ARM
 
 ## Requisitos previos
 
@@ -16,8 +16,8 @@
 
 ```bash
 # Clonar el repo
-git clone https://github.com/pocknix/pocknix-deckstation.git
-cd pocknix-deckstation
+git clone https://github.com/arcadematicas/deckstation-arm.git
+cd deckstation-arm
 
 # Compilar el paquete
 makepkg -si
@@ -257,7 +257,7 @@ sudo rm /usr/bin/deckstation
 
 ### Con el gestor de paquetes
 ```bash
-sudo pacman -R pocknix-deckstation
+sudo pacman -R deckstation-arm
 ```
 
 ## Notas finales

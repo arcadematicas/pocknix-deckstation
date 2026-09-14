@@ -1,20 +1,22 @@
-# Pocknix DeckStation ARM
+# DeckStation ARM
 
-**Sistema de emulación portable para arquitectura ARM (aarch64) — integrado en Pocknix**
+**Sistema de emulación portable para arquitectura ARM (aarch64/armv7h)**
 
-> ⚠️ **Este es el proyecto DeckStation ARM**. Existe una versión hermana para
-> **x86_64** (DeckStation original, para PC / Steam Deck) que se gestionará en
-> su propio repositorio (`pocknix-deckstation-x86_64` o similar) más adelante.
-> No confundir: este repo es SOLO para ARM.
+> **DeckStation** es un proyecto independiente de emulación portable.
+> Creado por **stshunz** — https://github.com/stshunz
+> Esta es la adaptación para arquitecturas ARM.
 
 ---
 
 ## ¿Qué es?
 
-Pocknix DeckStation ARM es un sistema de emulación portable que transforma
-cualquier dispositivo **ARM64** (AYN Odin 3, Raspberry Pi, tablets, etc.) en una
-consola de emulación completa. Está inspirado en Steam Deck y DeckStation, pero
-diseñado para funcionar en hardware ARM.
+DeckStation ARM es un sistema de emulación portable que transforma cualquier
+dispositivo **ARM64** (AYN Odin 3, Raspberry Pi, tablets, etc.) en una consola de
+emulación completa. Está inspirado en Steam Deck y DeckStation, pero diseñado para
+funcionar en hardware ARM.
+
+Es un proyecto **independiente de cualquier sistema operativo**: no depende de
+ninguna distribución concreta y todo queda autocontenido en su propia carpeta.
 
 ## Filosofía
 
@@ -24,50 +26,38 @@ diseñado para funcionar en hardware ARM.
 - **Sin dependencias del sistema**: Se auto-descarga todo lo necesario
 - **Modular**: Cada emulador es independiente
 
-## Arquitecturas soportadas
+## Arquitecturas
 
 | Arquitectura | Estado |
 |---|---|
-| **aarch64 (ARM64)** | ✅ Este repo — soportada |
+| **aarch64 (ARM64)** | ✅ Este repo — adaptación ARM |
 | **armv7h (ARM32)** | ⚠️ Parcial (depende del emulador) |
-| **x86_64** | ❌ NO — ver proyecto DeckStation x86_64 |
+| **x86_64** | ❌ Ver repo `deckstation-x86_64` (proyecto original) |
 
 ## Estructura del repo
 
 ```
-pocknix-deckstation/            # ← SOLO ARM
-├── README.md                   # Este archivo
-├── .gitignore                  # Qué ignorar
-├── PKGBUILD                    # Paquete Arch Linux ARM (aarch64/armv7h)
-├── pocknix-deckstation.install # Hooks de instalación
+deckstation-arm/
+├── README.md
+├── .gitignore
+├── PKGBUILD                       # Paquete Arch (aarch64/armv7h)
+├── deckstation-arm.install        # Hooks de instalación
 ├── scripts/
-│   ├── deckstation-setup.sh    # Descarga emuladores ARM64
-│   ├── deckstation-launcher.sh # Wrapper del sistema (portable, rutas relativas)
-│   ├── deckstation-update.sh   # Actualizador
-│   └── setup_arm64_apps.py     # Setup ARM64: busca AppImages aarch64 en PkgForge/GitHub
+│   ├── deckstation-setup.sh       # Descarga emuladores ARM64
+│   ├── deckstation-launcher.sh    # Launcher portable
+│   ├── deckstation-update.sh      # Actualizador
+│   └── setup_arm64_apps.py        # Setup ARM64: busca AppImages aarch64 en PkgForge/GitHub
 ├── overlay/
-│   └── usr/
-│       └── bin/
-│           └── deckstation     # Comando del sistema
-├── configs/                    # Configs portable de emuladores ARM (ver configs/README.md)
-│   ├── retroarch/              #   + autoconfig (610 configs de mandos)
-│   ├── es-de/                  #   ES-DE: es_find_rules.xml, es_systems.xml, es_settings.xml
-│   ├── duckstation/
-│   ├── azahar/
-│   ├── citron/
-│   ├── dolphin/
-│   ├── pcsx2/
-│   ├── ppsspp/
-│   ├── flycast/
-│   ├── dosboxpure/
-│   ├── rmg/
-│   ├── zsnes/
-│   ├── supermodel/
-│   ├── antimicrox/
-│   ├── vita3k/
-│   └── es-de-home/             # Reservado para configs de ES-DE
+│   └── usr/bin/deckstation        # Comando del sistema
+├── configs/                       # Configs portable de emuladores (ver configs/README.md)
+│   ├── retroarch/                 #   + autoconfig (610 configs de mandos)
+│   ├── es-de/                     #   ES-DE: es_find_rules.xml, es_systems.xml, es_settings.xml
+│   ├── duckstation/  azahar/  citron/  dolphin/
+│   ├── pcsx2/  ppsspp/  flycast/  dosboxpure/
+│   ├── rmg/  zsnes/  supermodel/  antimicrox/  vita3k/
+│   └── es-de-home/
 └── docs/
-    └── INSTALACION.md          # Guía completa
+    └── INSTALACION.md
 ```
 
 ## Estructura en ejecución (`/opt/deckstation/`)
@@ -100,7 +90,7 @@ pocknix-deckstation/            # ← SOLO ARM
 makepkg -si
 
 # O instalar desde pre-compilado
-sudo pacman -U pocknix-deckstation-*.pkg.tar.zst
+sudo pacman -U deckstation-arm-*.pkg.tar.zst
 ```
 
 ### Post-instalación
@@ -119,11 +109,10 @@ deckstation-update
 
 ## Licencia
 
-Proyecto parte de Pocknix — Licencia GPL v2+
+GPL v2+
 
 ## Créditos
 
-- **Pocknix**: Sistema base
-- **DeckStation**: Inspiración original
-- **DeckStation ARM**: Adaptación para arquitecturas ARM
+- **stshunz** — creador original de DeckStation (https://github.com/stshunz)
+- **DeckStation ARM** — adaptación para arquitecturas ARM
 - **Emuladores**: RetroArch, Dolphin, DuckStation, PPSSPP, etc. (versiones ARM64)

@@ -233,7 +233,7 @@ setup_extra_cores() {
 main() {
     echo ""
     echo "=========================================="
-    echo "  Pocknix DeckStation - Setup"
+    echo "  DeckStation - Setup"
     echo "=========================================="
     echo ""
 

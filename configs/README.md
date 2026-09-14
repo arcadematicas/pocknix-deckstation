@@ -1,7 +1,7 @@
 # Configs de emuladores — DeckStation ARM
 
 Configuraciones personalizadas importadas desde el proyecto DeckStation ARM
-(`/run/media/fransis/8TB/deckstation-arm/`) al repo portable pocknix-deckstation.
+(`/run/media/fransis/8TB/deckstation-arm/`) al repo portable deckstation-arm.
 
 ## Qué se copió y por qué
 

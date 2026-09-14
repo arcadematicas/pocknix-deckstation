@@ -165,7 +165,7 @@ update_configs() {
 main() {
     echo ""
     echo "=========================================="
-    echo "  Pocknix DeckStation - Actualización"
+    echo "  DeckStation - Actualización"
     echo "=========================================="
     echo ""
 

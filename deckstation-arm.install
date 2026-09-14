@@ -1,10 +1,10 @@
-# pocknix-deckstation-arm.install
+# deckstation-arm.install
 # Hooks de instalación para el paquete (versión ARM)
 
 post_install() {
     echo ""
     echo "=========================================="
-    echo "  Pocknix DeckStation ARM instalado!"
+    echo "  DeckStation ARM instalado!"
     echo "  (aarch64 / armv7h)"
     echo "=========================================="
     echo ""
@@ -32,7 +32,7 @@ post_install() {
 post_upgrade() {
     echo ""
     echo "=========================================="
-    echo "  Pocknix DeckStation ARM actualizado!"
+    echo "  DeckStation ARM actualizado!"
     echo "=========================================="
     echo ""
     echo "Para actualizar emuladores:"

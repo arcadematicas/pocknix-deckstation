@@ -1,15 +1,13 @@
-# Maintainer: Pocknix Team <pocknix@example.com>
-# DeckStation ARM — versión para arquitectura aarch64/armv7h.
-# NO usar en x86_64: existe el proyecto DeckStation x86_64 aparte.
-pkgname=pocknix-deckstation-arm
+# Maintainer: stshunz <https://github.com/stshunz>
+# DeckStation ARM — sistema de emulación portable para aarch64/armv7h.
+# Proyecto independiente. Versión original (x86_64): deckstation-x86_64.
+pkgname=deckstation-arm
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Sistema de emulación portable para ARM (aarch64/armv7h) — integrado en Pocknix"
+pkgdesc="Sistema de emulación portable para ARM (aarch64/armv7h)"
 arch=('aarch64' 'armv7h')
-url="https://github.com/arcadematicas/pocknix-deckstation"
+url="https://github.com/arcadematicas/deckstation-arm"
 license=('GPL2')
-provides=('pocknix-deckstation')
-conflicts=('pocknix-deckstation')
 depends=(
     'python'
     'python-requests'
@@ -24,7 +22,7 @@ optdepends=(
 )
 source=()
 sha256sums=()
-install=pocknix-deckstation.install
+install=deckstation-arm.install
 
 package() {
     # Directorio base
