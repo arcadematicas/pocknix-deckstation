@@ -14,7 +14,7 @@
             <entry>org.libretro.RetroArch</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/RetroArch/RetroArch-Linux-aarch64.AppImage</entry>
+            <entry>./Apps/RetroArch/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -125,7 +125,7 @@
             <entry>Cemu</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Cemu/Cemu*.AppImage</entry>
+            <entry>./Apps/Cemu/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -185,7 +185,7 @@
             <entry>org.DolphinEmu.dolphin-emu</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Dolphin/Dolphin*.AppImage</entry>
+            <entry>./Apps/Dolphin/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -194,7 +194,7 @@
             <entry>DOSBoxPure</entry>
             </rule>
             <rule type="staticpath">
-                <entry>./Apps/DosBoxPure/DOSBox_Pure.AppImage</entry>
+                <entry>./Apps/DosBoxPure/lanzar.sh</entry>
             </rule>
             </emulator>
     <emulator name="DOSBOX-STAGING">
@@ -225,7 +225,7 @@
                 <entry>dreamm</entry>
             </rule>
             <rule type="staticpath">
-                <entry>./Apps/Dreamm/DREAMM.AppImage</entry>
+                <entry>./Apps/Dreamm/lanzar.sh</entry>
 
                 </rule>
                 </emulator>
@@ -238,7 +238,7 @@
             <entry>org.duckstation.DuckStation</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Duckstation/DuckStation*.AppImage</entry>
+            <entry>./Apps/Duckstation/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -290,7 +290,7 @@
             <entry>org.flycast.Flycast</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Flycast/Flycast.AppImage</entry>
+            <entry>./Apps/Flycast/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -456,7 +456,7 @@
             <entry>net.kuribo64.melonDS</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/MelonDS/melonDS-x86_64.AppImage</entry>
+            <entry>./Apps/MelonDS/melonDS.AppImage</entry>
 
         </rule>
     </emulator>
@@ -511,7 +511,7 @@
             <entry>org.openmsx.openMSX</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/OpenMSX/openMSX.AppImage</entry>
+            <entry>./Apps/OpenMSX/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -546,7 +546,7 @@
             <entry>net.pcsx2.PCSX2</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Pcsx2/pcsx2*.AppImage</entry>
+            <entry>./Apps/Pcsx2/pcsx2.AppImage</entry>
 
         </rule>
     </emulator>
@@ -590,7 +590,7 @@
             <entry>org.ppsspp.PPSSPP</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/PPSSPP/PPSSPP.AppImage</entry>
+            <entry>./Apps/PPSSPP/lanzar.sh</entry>
         </rule>
     </emulator>
     <emulator name="PRBOOM-PLUS">
@@ -606,7 +606,7 @@
             <entry>io.github.shiiion.primehack</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Primehack/PrimeHack.appimage</entry>
+            <entry>./Apps/Primehack/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -663,7 +663,7 @@
             <entry>com.github.Rosalie241.RMG</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/RMG/RMG*.AppImage</entry>
+            <entry>./Apps/RMG/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -675,7 +675,7 @@
             <entry>net.rpcs3.RPCS3</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/RPCS3/rpcs3.AppImage</entry>
+            <entry>./Apps/RPCS3/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -685,7 +685,7 @@
             <entry>ruffle</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Ruffle/Ruffle.AppImage</entry>
+            <entry>./Apps/Ruffle/lanzar.sh</entry>
         </rule>
     </emulator>
     <emulator name="RYUJINX">
@@ -696,7 +696,7 @@
             <entry>org.ryujinx.Ryujinx</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Ryujinx/ryujinx.AppImage</entry>
+            <entry>./Apps/Ryujinx/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -718,7 +718,7 @@
             <entry>org.scummvm.ScummVM</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Scummvm/ScummVM.appimage</entry>
+            <entry>./Apps/Scummvm/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -831,7 +831,7 @@
             <entry>supermodel</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Supermodel/Supermodel.AppImage</entry>
+            <entry>./Apps/Supermodel/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -920,7 +920,7 @@
             <entry>Vita3K</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Vita3K/Vita3K.appimage</entry>
+            <entry>/Apps/Vita3K/Vita3K*.AppImage</entry>
 
         </rule>
     </emulator>
@@ -942,7 +942,7 @@
             <entry>app.xemu.xemu</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Xemu/xemu*.AppImage</entry>
+            <entry>./Apps/Xemu/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -953,7 +953,7 @@
             <entry>app.xemu.xemu</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/Xemu_Chihiro/xemu*.AppImage</entry>
+            <entry>./Apps/Xemu_Chihiro/lanzar.sh</entry>
 
         </rule>
     </emulator>
@@ -998,7 +998,7 @@
             <entry>ymir</entry>
         </rule>
         <rule type="staticpath">
-            <entry>./Apps/ymir/Ymir.AppImage</entry>
+            <entry>./Apps/ymir/lanzar.sh</entry>
         </rule>
     </emulator>
     <emulator name="ZESARUX">
@@ -1009,6 +1009,61 @@
         <rule type="staticpath">
             <entry>./Apps/ZEsarUX/ZEsarUX-x86_64.AppImage</entry>
 
+        </rule>
+    </emulator>
+
+    <emulator name="AZAHAR">
+        <!-- Nintendo 3DS emulator Azahar -->
+        <rule type="systempath">
+            <entry>azahar</entry>
+        </rule>
+        <rule type="staticpath">
+            <entry>./Apps/Azahar/lanzar.sh</entry>
+        </rule>
+    </emulator>
+    <emulator name="CITRON">
+        <!-- Nintendo Switch emulator Citron -->
+        <rule type="systempath">
+            <entry>citron</entry>
+        </rule>
+        <rule type="staticpath">
+            <entry>./Apps/Citron/lanzar.sh</entry>
+        </rule>
+    </emulator>
+    <emulator name="ZSNES">
+        <!-- Super Nintendo emulator ZSNES -->
+        <rule type="systempath">
+            <entry>zsnes</entry>
+        </rule>
+        <rule type="staticpath">
+            <entry>./Apps/ZSNES/lanzar.sh</entry>
+        </rule>
+    </emulator>
+    <emulator name="BIGPEMU">
+        <!-- Atari Jaguar emulator BigPEmu -->
+        <rule type="systempath">
+            <entry>bigpemu</entry>
+        </rule>
+        <rule type="staticpath">
+            <entry>./Apps/bigpemu/lanzar.sh</entry>
+        </rule>
+    </emulator>
+    <emulator name="EDEN">
+        <!-- Sega Saturn emulator Eden -->
+        <rule type="systempath">
+            <entry>eden</entry>
+        </rule>
+        <rule type="staticpath">
+            <entry>./Apps/Eden/lanzar.sh</entry>
+        </rule>
+    </emulator>
+    <emulator name="RMG">
+        <!-- Nintendo 64 emulator RMG -->
+        <rule type="systempath">
+            <entry>rmg</entry>
+        </rule>
+        <rule type="staticpath">
+            <entry>./Apps/RMG/lanzar.sh</entry>
         </rule>
     </emulator>
 </ruleList>
