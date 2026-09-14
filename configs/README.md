@@ -6,8 +6,12 @@ Configuraciones personalizadas importadas desde el proyecto DeckStation ARM
 ## Qué se copió y por qué
 
 | Emulador | Archivo(s) | Origen | Notas |
-|---|---|---|---|
+|---|---|---|---|---|
 | RetroArch | `retroarch/retroarch.cfg` | `.backup-configs-20260624_182554/retroarch.cfg.bak` | Config principal personalizada (116 KB). Sin paths hardcodeados. |
+| RetroArch | `retroarch/autoconfig/` | `Apps/RetroArch/.../.config/retroarch/autoconfig/` | Configs de mandos (hid/, udev/, linuxraw/, parport/, sdl2/, x/ + 2 .cfg sueltos). 611 archivos. |
+| ES-DE | `es-de/custom_systems/es_find_rules.xml` | `DeckStation.AppImage.home/ES-DE/custom_systems/` | Reglas de detección de emuladores. Rutas adaptadas a ARM (`./Apps/...`). |
+| ES-DE | `es-de/custom_systems/es_systems.xml` | `DeckStation.AppImage.home/ES-DE/custom_systems/` | Definición de sistemas (171 KB). Paths de ROMs convertidos a `%ROMPATH%`. |
+| ES-DE | `es-de/settings/es_settings.xml` | `DeckStation.AppImage.home/ES-DE/settings/` | Configuración de ES-DE (8 KB). Sin paths hardcodeados. |
 | DuckStation | `duckstation/settings.ini` | `Apps/Duckstation/.../.local/share/duckstation/settings.ini` | Config personalizada (idioma es-ES, fullscreen, etc.). |
 | DuckStation | `duckstation/duckstation.ini` | `.backup-configs-20260624_182554/duckstation.ini.bak` | Backup de configuración. |
 | DuckStation | `duckstation/qt.conf` | `Apps/Duckstation/qt.conf` | Plugins relativos (`./QtPlugins`), portable. |
@@ -32,15 +36,13 @@ Configuraciones personalizadas importadas desde el proyecto DeckStation ARM
 - **Caches** (shader cache, mesa) — se regeneran en runtime.
 - **`QtProject.conf`** de DuckStation/Azahar — solo estado de UI con paths
   hardcodeados del sistema original.
-- **`DeckStation.AppImage.home/`** — **el directorio estaba VACÍO** en el
-  proyecto origen, por lo que no había configs de ES-DE que copiar.
-- **`es_find_rules.xml`** — **no existe** en el proyecto DeckStation ARM
-  (búsqueda exhaustiva en `deckstation-arm/`). Si ES-DE usa reglas custom,
-  habrá que crearlas desde cero.
+- **`es_find_rules.xml` / `es_systems.xml` del proyecto ARM** — no existen en
+  `deckstation-arm/` (búsqueda exhaustiva). Se importaron los del PC original
+  (ROMS16TB) y se adaptaron las rutas de emuladores a ARM.
 
 ## Nota sobre `configs/es-de-home/`
 
-Este directorio está reservado para los configs de ES-DE (el frontend). En el
-proyecto origen `DeckStation.AppImage.home/` estaba vacío, así que no se pudo
-importar nada. Cuando se personalice ES-DE, los configs deben ir aquí con
-rutas relativas.
+Este directorio está reservado para el home portable de ES-DE (`.emulationstation/`
+o similar). Los configs de ES-DE importados viven en `configs/es-de/`
+(`custom_systems/` y `settings/`), con rutas relativas (`./Apps/...` y
+`%ROMPATH%/...`).
