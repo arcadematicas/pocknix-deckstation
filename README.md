@@ -1,15 +1,20 @@
-# Pocknix DeckStation
+# Pocknix DeckStation ARM
 
-**Sistema de emulación portable para ARM — integrado en Pocknix**
+**Sistema de emulación portable para arquitectura ARM (aarch64) — integrado en Pocknix**
+
+> ⚠️ **Este es el proyecto DeckStation ARM**. Existe una versión hermana para
+> **x86_64** (DeckStation original, para PC / Steam Deck) que se gestionará en
+> su propio repositorio (`pocknix-deckstation-x86_64` o similar) más adelante.
+> No confundir: este repo es SOLO para ARM.
 
 ---
 
 ## ¿Qué es?
 
-Pocknix DeckStation es un emulador portable que transforma cualquier dispositivo ARM
-(Android, Linux ARM, tablets, etc.) en una consola de emulación completa. Está
-inspirado en Steam Deck y DeckStation, pero diseñado para funcionar en hardware
-de menor potencia.
+Pocknix DeckStation ARM es un sistema de emulación portable que transforma
+cualquier dispositivo **ARM64** (AYN Odin 3, Raspberry Pi, tablets, etc.) en una
+consola de emulación completa. Está inspirado en Steam Deck y DeckStation, pero
+diseñado para funcionar en hardware ARM.
 
 ## Filosofía
 
@@ -19,16 +24,24 @@ de menor potencia.
 - **Sin dependencias del sistema**: Se auto-descarga todo lo necesario
 - **Modular**: Cada emulador es independiente
 
+## Arquitecturas soportadas
+
+| Arquitectura | Estado |
+|---|---|
+| **aarch64 (ARM64)** | ✅ Este repo — soportada |
+| **armv7h (ARM32)** | ⚠️ Parcial (depende del emulador) |
+| **x86_64** | ❌ NO — ver proyecto DeckStation x86_64 |
+
 ## Estructura del repo
 
 ```
-pocknix-deckstation/
+pocknix-deckstation/            # ← SOLO ARM
 ├── README.md                   # Este archivo
 ├── .gitignore                  # Qué ignorar
-├── PKGBUILD                    # Paquete Arch Linux ARM
+├── PKGBUILD                    # Paquete Arch Linux ARM (aarch64/armv7h)
 ├── pocknix-deckstation.install # Hooks de instalación
 ├── scripts/
-│   ├── deckstation-setup.sh    # Descarga emuladores
+│   ├── deckstation-setup.sh    # Descarga emuladores ARM64
 │   ├── deckstation-launcher.sh # Wrapper del sistema (portable, rutas relativas)
 │   ├── deckstation-update.sh   # Actualizador
 │   └── setup_arm64_apps.py     # Setup ARM64: busca AppImages aarch64 en PkgForge/GitHub
@@ -36,8 +49,9 @@ pocknix-deckstation/
 │   └── usr/
 │       └── bin/
 │           └── deckstation     # Comando del sistema
-├── configs/                    # Configs portable de emuladores (ver configs/README.md)
-│   ├── retroarch/
+├── configs/                    # Configs portable de emuladores ARM (ver configs/README.md)
+│   ├── retroarch/              #   + autoconfig (610 configs de mandos)
+│   ├── es-de/                  #   ES-DE: es_find_rules.xml, es_systems.xml, es_settings.xml
 │   ├── duckstation/
 │   ├── azahar/
 │   ├── citron/
@@ -60,9 +74,9 @@ pocknix-deckstation/
 
 ```
 /opt/deckstation/
-├── DeckStation.AppImage        # La AppImage principal
+├── DeckStation.AppImage        # La AppImage principal (ES-DE)
 ├── DeckStation.sh              # Script de lanzamiento
-├── Apps/                       # Emuladores descargados
+├── Apps/                       # Emuladores descargados (ARM64)
 ├── saves/                      # Saves del usuario
 ├── logs/                       # Logs de ejecución
 ├── Media/                      # Assets multimedia
@@ -74,7 +88,7 @@ pocknix-deckstation/
 ## Cómo funciona
 
 1. **Instalación**: El paquete Arch instala la estructura base
-2. **Setup**: `deckstation-setup` descarga los emuladores necesarios
+2. **Setup**: `deckstation-setup` descarga los emuladores ARM64 necesarios
 3. **Uso**: `deckstation` lanza el sistema completo
 4. **Actualización**: `deckstation-update` actualiza todo
 
@@ -91,7 +105,7 @@ sudo pacman -U pocknix-deckstation-*.pkg.tar.zst
 
 ### Post-instalación
 ```bash
-# Descargar emuladores
+# Descargar emuladores ARM64
 deckstation-setup
 
 # Lanzar
@@ -111,4 +125,5 @@ Proyecto parte de Pocknix — Licencia GPL v2+
 
 - **Pocknix**: Sistema base
 - **DeckStation**: Inspiración original
-- **Emuladores**: RetroArch, Dolphin, AetherSX2, etc.
+- **DeckStation ARM**: Adaptación para arquitecturas ARM
+- **Emuladores**: RetroArch, Dolphin, DuckStation, PPSSPP, etc. (versiones ARM64)
