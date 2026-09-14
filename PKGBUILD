@@ -48,6 +48,11 @@ package() {
     install -Dm755 overlay/usr/bin/deckstation \
         "${pkgdir}/usr/bin/deckstation"
 
+    # Overlay: entrada de escritorio (solo DeckStation/ES-DE; los emuladores se
+    # lanzan desde ES-DE, no necesitan .desktop propio)
+    install -Dm644 overlay/usr/share/applications/deckstation.desktop \
+        "${pkgdir}/usr/share/applications/deckstation.desktop"
+
     # Estructura de directorios (se crearán en post-install)
     install -dm755 "${pkgdir}/opt/deckstation/Apps"
     install -dm755 "${pkgdir}/opt/deckstation/saves"
