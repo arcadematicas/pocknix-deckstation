@@ -1,0 +1,47 @@
+# pocknix-deckstation.install
+# Hooks de instalación para el paquete
+
+post_install() {
+    echo ""
+    echo "=========================================="
+    echo "  Pocknix DeckStation instalado!"
+    echo "=========================================="
+    echo ""
+    echo "Directorio: /opt/deckstation/"
+    echo ""
+    echo "Siguiente paso: descargar emuladores"
+    echo ""
+    echo "  deckstation-setup"
+    echo ""
+    echo "Esto descargará:"
+    echo "  - RetroArch (multi-sistema)"
+    echo "  - Dolphin (GameCube/Wii)"
+    echo "  - AetherSX2 (PS2)"
+    echo "  - Y más..."
+    echo ""
+    echo "Una vez descargado:"
+    echo "  deckstation          # Lanzar"
+    echo "  deckstation-update   # Actualizar"
+    echo ""
+    echo "Documentación: /opt/deckstation/docs/"
+    echo "=========================================="
+}
+
+post_upgrade() {
+    echo ""
+    echo "=========================================="
+    echo "  Pocknix DeckStation actualizado!"
+    echo "=========================================="
+    echo ""
+    echo "Para actualizar emuladores:"
+    echo "  deckstation-update"
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "Nota: Los emuladores en /opt/deckstation/Apps/"
+    echo "NO se eliminan. Para limpiar manualmente:"
+    echo "  sudo rm -rf /opt/deckstation/"
+    echo ""
+}

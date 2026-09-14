@@ -1,0 +1,268 @@
+# Guía de Instalación — Pocknix DeckStation
+
+## Requisitos previos
+
+- **Sistema**: Arch Linux ARM (aarch64/armv7h) o compatible
+- **Espacio**: ~5 GB libres para emuladores base
+- **Conexión**: Internet para descargar emuladores
+- **Dependencias**:
+  - `python` y `python-requests`
+  - `gamemode` (opcional pero recomendado)
+  - `curl` o `wget`
+
+## Instalación del paquete
+
+### Opción 1: Compilar desde PKGBUILD
+
+```bash
+# Clonar el repo
+git clone https://github.com/pocknix/pocknix-deckstation.git
+cd pocknix-deckstation
+
+# Compilar el paquete
+makepkg -si
+```
+
+Esto instalará:
+- `/opt/deckstation/` — Directorio base
+- `/usr/bin/deckstation` — Comando del sistema
+- Scripts de gestión en `/opt/deckstation/scripts/`
+
+### Opción 2: Instalación manual
+
+Si no usas Arch Linux:
+
+```bash
+# Crear directorio base
+sudo mkdir -p /opt/deckstation
+
+# Copiar archivos
+sudo cp -r scripts/ /opt/deckstation/
+sudo cp -r configs/ /opt/deckstation/
+sudo cp -r overlay/usr/bin/ /opt/deckstation/
+
+# Hacer ejecutables los scripts
+sudo chmod +x /opt/deckstation/scripts/*.sh
+
+# Crear comando del sistema
+sudo ln -sf /opt/deckstation/scripts/deckstation-launcher.sh /usr/local/bin/deckstation
+```
+
+## Descarga de emuladores
+
+Una vez instalado el paquete, necesitas descargar los emuladores:
+
+```bash
+# Ejecutar setup
+deckstation-setup
+```
+
+Esto descargará automáticamente:
+- **RetroArch**: Emulador multi-sistema (NES, SNES, GBA, N64, etc.)
+- **Dolphin**: GameCube y Wii
+- **Core cores**: Módulos adicionales de RetroArch
+
+### Opciones del setup
+
+```bash
+# Descarga normal (omite si ya existe)
+deckstation-setup
+
+# Forzar re-descarga completa
+deckstation-setup --force
+
+# Ver ayuda
+deckstation-setup --help
+```
+
+### Descarga manual de emuladores
+
+Si prefieres instalar manualmente:
+
+#### RetroArch
+```bash
+# Opción A: Desde pacman
+sudo pacman -S retroarch retroarch-assets
+
+# Opción B: Desde el setup
+deckstation-setup
+```
+
+#### Dolphin
+```bash
+# Desde pacman
+sudo pacman -S dolphin-emu
+
+# El setup creará symlinks automáticos
+```
+
+#### AetherSX2 (PS2)
+```bash
+# No hay builds oficiales para ARM
+# Opciones:
+# 1. Compilar desde fuente
+# 2. Usar versiones alternativas
+# Ver: https://github.com/AetherSX2/... para más info
+```
+
+## Uso básico
+
+### Lanzar DeckStation
+
+```bash
+deckstation
+```
+
+Esto:
+1. Verifica la estructura de directorios
+2. Configura symlinks de compatibilidad
+3. Detecta GPU y GameMode
+4. Lanza el sistema de emulación
+
+### Actualizar emuladores
+
+```bash
+# Actualizar a últimas versiones
+deckstation-update
+
+# Forzar actualización completa
+deckstation-update --force
+```
+
+El actualizador:
+- Crea backups antes de actualizar
+- Mantiene los últimos 3 backups
+- No sobrescribe configs del usuario
+
+### Estructura de directorios
+
+```
+/opt/deckstation/
+├── Apps/           # Emuladores (se auto-generan)
+├── saves/          # Saves del usuario
+├── logs/           # Logs de ejecución
+├── configs/        # Configuraciones
+├── settings/       # Settings del sistema
+├── Media/          # Assets multimedia
+├── backups/        # Backups de actualización
+└── scripts/        # Scripts de gestión
+```
+
+### Archivos del usuario
+
+Los saves y configs del usuario están en:
+- **Saves**: `/opt/deckstation/saves/` o `~/DeckStation/`
+- **Configs**: `/opt/deckstation/configs/`
+- **Logs**: `/opt/deckstation/logs/`
+
+## Troubleshooting
+
+### "deckstation: command not found"
+
+El comando no está en tu PATH. Soluciones:
+
+```bash
+# Verificar instalación
+ls -la /usr/bin/deckstation
+
+# Si no existe, crear symlink manual
+sudo ln -sf /opt/deckstation/scripts/deckstation-launcher.sh /usr/local/bin/deckstation
+
+# O agregar /usr/bin al PATH
+export PATH="/usr/bin:$PATH"
+```
+
+### "No se encontró ningún launcher"
+
+Los emuladores no están instalados:
+
+```bash
+# Ejecutar setup
+deckstation-setup
+
+# Verificar que se instalaron
+ls -la /opt/deckstation/Apps/
+```
+
+### Problemas de permisos
+
+```bash
+# Reparar permisos
+sudo chown -R $(whoami) /opt/deckstation/
+sudo chmod -R 755 /opt/deckstation/
+
+# Para usar sin sudo
+sudo usermod -aG video $(whoami)
+sudo usermod -aG input $(whoami)
+```
+
+### Emulador específico no funciona
+
+1. **RetroArch**:
+   ```bash
+   # Verificar cores instalados
+   ls /opt/deckstation/Apps/retroarch/cores/
+
+   # Actualizar cores desde el menú
+   # Online Updater -> Core Updater
+   ```
+
+2. **Dolphin**:
+   ```bash
+   # Verificar que está instalado
+   which dolphin-emu
+
+   # Instalar si falta
+   sudo pacman -S dolphin-emu
+   ```
+
+### Logs para diagnóstico
+
+```bash
+# Ver log del launcher
+cat /opt/deckstation/logs/launcher.log
+
+# Ver log de setup
+cat /opt/deckstation/logs/setup.log
+
+# Ver log de actualización
+cat /opt/deckstation/logs/update.log
+```
+
+### GameMode no activa
+
+```bash
+# Verificar instalación
+which gamemoded
+
+# Activar servicio
+sudo systemctl enable --now gamemoded
+
+# Verificar que funciona
+gamemoded -s
+```
+
+## Desinstalación
+
+### Solo emuladores
+```bash
+rm -rf /opt/deckstation/Apps/
+```
+
+### Todo el sistema
+```bash
+sudo rm -rf /opt/deckstation/
+sudo rm /usr/bin/deckstation
+```
+
+### Con el gestor de paquetes
+```bash
+sudo pacman -R pocknix-deckstation
+```
+
+## Notas finales
+
+- **No toca el sistema**: DeckStation es completamente portable
+- **Configs persistentes**: Se mantienen entre actualizaciones
+- **Backups automáticos**: El actualizador siempre respalda antes de cambiar
+- **Multi-usuario**: Cada usuario puede tener su propio `/opt/deckstation/`
