@@ -37,6 +37,8 @@ package() {
         "${pkgdir}/opt/deckstation/scripts/deckstation-update.sh"
     install -Dm755 scripts/setup_arm64_apps.py \
         "${pkgdir}/opt/deckstation/scripts/setup_arm64_apps.py"
+    install -Dm755 scripts/lanzar.sh \
+        "${pkgdir}/opt/deckstation/scripts/lanzar.sh"
 
     # Configs de emuladores (portables, rutas relativas)
     install -dm755 "${pkgdir}/opt/deckstation/configs"

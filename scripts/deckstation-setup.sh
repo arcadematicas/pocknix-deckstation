@@ -226,6 +226,29 @@ setup_extra_cores() {
     log_warn "Los cores se descargarán al lanzar RetroArch por primera vez"
 }
 
+# Despliega el wrapper portable lanzar.sh a cada carpeta de emulador que contenga
+# un AppImage. ES-DE (es_find_rules.xml) apunta a ./Apps/*/lanzar.sh en vez del
+# AppImage directo, así que el wrapper debe existir para que el lanzamiento sea
+# portable (HOME redirigido al .home, SDL fijado al compositor).
+deploy_lanzar_sh() {
+    local lanzar_src="${SCRIPTS_DIR}/lanzar.sh"
+    local app_dir found
+
+    [ -f "${lanzar_src}" ] || {
+        log_warn "Plantilla lanzar.sh no encontrada (${lanzar_src}); se omite"
+        return 0
+    }
+
+    log "Desplegando lanzar.sh a los emuladores..."
+    for app_dir in "${APPS_DIR}"/*/; do
+        [ -d "${app_dir}" ] || continue
+        found="$(find "${app_dir}" -maxdepth 1 \( -iname "*.AppImage" -o -iname "*.appimage" \) 2>/dev/null | head -1)"
+        [ -n "${found}" ] || continue
+        install -m755 "${lanzar_src}" "${app_dir}lanzar.sh" 2>/dev/null \
+            && log_ok "lanzar.sh -> $(basename "${app_dir}")" || true
+    done
+}
+
 # ============================================================================
 # Main
 # ============================================================================
@@ -274,6 +297,7 @@ main() {
     setup_pcsx2
     setup_dolphin
     setup_extra_cores
+    deploy_lanzar_sh
 
     # Resumen
     echo ""
